@@ -17,3 +17,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.enc.jpeg.quality=100 \
     persist.sys.root_access=3
 
+# Extra Optional packages
+PRODUCT_PACKAGES += \
+    Trebuchet \
+    Apollo
+
