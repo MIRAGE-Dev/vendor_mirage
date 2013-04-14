@@ -20,5 +20,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Trebuchet \
-    Apollo
+    Apollo \
+    DSPManager \
+    libcyanogen-dsp \
+    audio_effects.conf
 
