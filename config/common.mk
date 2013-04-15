@@ -29,6 +29,10 @@ PRODUCT_COPY_FILES += \
     vendor/slim/prebuilt/common/bin/compcache:system/bin/compcache \
     vendor/slim/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
+# Audio Config for DSPManager
+PRODUCT_COPY_FILES += \
+    vendor/slim/prebuilt/common/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
+
 # Bring in media files
 PRODUCT_COPY_FILES +=  \
     vendor/slim/prebuilt/common/media/audio/alarms/Alarm_Classic.ogg:system/media/audio/alarms/Alarm_Classic.ogg \
@@ -79,15 +83,18 @@ PRODUCT_COPY_FILES += \
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/slim/prebuilt/common/etc/mkshrc:system/etc/mkshrc \
+    vendor/slim/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
 PRODUCT_COPY_FILES += \
-    vendor/slim/prebuilt/common/etc/init.d/91zipalign:system/etc/init.d/91zipalign \
-    vendor/slim/prebuilt/common/etc/init.d/98system:system/etc/init.d/98system \
-    vendor/slim/prebuilt/common/etc/init.d/ZZafterboot:system/etc/init.d/ZZafterboot \
-    vendor/slim/prebuilt/common/bin/armzipalign:system/bin/armzipalign \
     vendor/slim/prebuilt/common/bin/sysrw:system/bin/sysrw \
     vendor/slim/prebuilt/common/bin/sysro:system/bin/sysro \
+    vendor/slim/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
+
+PRODUCT_COPY_FILES += \
+    vendor/slim/prebuilt/common/etc/init.d/00slim:system/etc/init.d/00slim \
+    vendor/slim/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
+    vendor/slim/prebuilt/common/etc/init.d/98tweaks:system/etc/init.d/98tweaks \
+    vendor/slim/prebuilt/common/etc/liberty.bsh:system/etc/liberty.bsh \
     vendor/slim/prebuilt/common/etc/init_trigger.disabled:system/etc/init_trigger.disabled \
     vendor/slim/prebuilt/common/bin/sysinit:system/bin/sysinit
 
@@ -116,11 +123,14 @@ PRODUCT_PACKAGES += \
     Basic \
     HoloSpiralWallpaper \
     NoiseField \
+    Galaxy4 \
     LiveWallpapersPicker \
     PhaseBeam
 
 # Extra Optional packages
 PRODUCT_PACKAGES += \
+    DashClock \
+    SlimFileManager \
     SlimCenter \
     Velvet \
     LatinIME
@@ -137,29 +147,31 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/slim/overlay/common
 
 # T-Mobile theme engine
 include vendor/slim/config/themes_common.mk
+
+# Versioning System
 PRODUCT_VERSION_MAJOR = 4.2.2
 PRODUCT_VERSION_MINOR = build
-PRODUCT_VERSION_MAINTENANCE = 3.3
-
+PRODUCT_VERSION_MAINTENANCE = 3.4
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=JDQ39
 
 PRODUCT_PROPERTY_OVERRIDES += \
     slim.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)
 
 ifdef SLIM_NIGHTLY
-    PRODUCT_PROPERTY_OVERRIDES += \
-        ro.slim.version=Slim-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-NIGHTLY-$(shell date +"%Y%m%d-%H%M") \
-        ro.modversion=Slim-$(PRODUCT_RELEASE_NAME)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-NIGHTLY-$(shell date +"%Y%m%d-%H%M")
+    SLIM_VERSION := Slim-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-NIGHTLY-$(shell date +"%Y%m%d-%H%M")
+    SLIM_MOD_VERSION := Slim-$(PRODUCT_RELEASE_NAME)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-NIGHTLY-$(shell date +"%Y%m%d-%H%M")
 else
-    ifdef SLIM_RELEASE
-        PRODUCT_PROPERTY_OVERRIDES += \
-            ro.slim.version=Slim-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-OFFICIAL \
-            ro.modversion=Slim-$(PRODUCT_RELEASE_NAME)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-OFFICIAL
-    else
-        PRODUCT_PROPERTY_OVERRIDES += \
-            ro.slim.version=Slim-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-UNOFFICIAL-$(shell date +"%Y%m%d-%H%M") \
-            ro.modversion=Slim-$(PRODUCT_RELEASE_NAME)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-UNOFFICIAL-$(shell date +"%Y%m%d-%H%M")
-    endif
+ifdef SLIM_RELEASE
+        SLIM_VERSION := Slim-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-OFFICIAL
+        SLIM_MOD_VERSION := Slim-$(PRODUCT_RELEASE_NAME)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-OFFICIAL
+else
+        SLIM_VERSION := Slim-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-UNOFFICIAL-$(shell date +"%Y%m%d-%H%M")
+        SLIM_MOD_VERSION := Slim-$(PRODUCT_RELEASE_NAME)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-UNOFFICIAL-$(shell date +"%Y%m%d-%H%M")
 endif
+endif
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.slim.version=$(SLIM_VERSION) \
+    ro.modversion=$(SLIM_MOD_VERSION)
 
 include vendor/slim/config/mirage.mk
