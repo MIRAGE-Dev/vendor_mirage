@@ -130,11 +130,10 @@ PRODUCT_PACKAGES += \
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     DashClock \
-    SlimFileManager \
+    CMFileManager \
     SlimCenter \
     Velvet \
-    LatinIME \
-    SlimIRC
+    LatinIME
 
 # Extra tools
 PRODUCT_PACKAGES += \
