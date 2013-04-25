@@ -103,9 +103,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/mirage/overlay/common
 include vendor/mirage/config/themes_common.mk
 
 # Versioning System
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=$(BUILD_ID)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    mirage.ota.version=$(MIRAGE_VERSION_MAJOR).$(MIRAGE_VERSION_MINOR).$(MIRAGE_VERSION_MAINTENANCE)
+include vendor/mirage/config/version.mk
 
 include vendor/mirage/config/mirage.mk
