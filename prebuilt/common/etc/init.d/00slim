@@ -42,19 +42,15 @@ if busybox [ ! -d /data/cron ]; then
 # run-parts
 01 * * * * busybox run-parts /system/etc/cron/cron.hourly
 02 4 * * * busybox run-parts /system/etc/cron/cron.daily
-22 4 * * 0 busybox run-parts /system/etc/cron/cron.weekly
+03 4 * * 0 busybox run-parts /system/etc/cron/cron.weekly
 EOF
 fi
 busybox crond -c /data/cron
 
-# Read Ahead
-if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ];
-then
-    echo "1024" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
-fi;
+mount -o remount,rw rootfs /
 
-# Set SD Card Cache
-busybox echo "2048" > /sys/devices/virtual/bdi/179:0/read_ahead_kb
+# Read Ahead
+echo "1024" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
 
 # etc
 busybox echo "0" > /proc/sys/net/ipv6/conf/all/forwarding
@@ -82,3 +78,5 @@ echo "0" > /proc/sys/vm/laptop_mode;
 echo "0" > /proc/sys/vm/block_dump;
 echo "0" > /proc/sys/vm/oom_dump_tasks;
 echo "3" > /proc/sys/vm/drop_caches;
+
+mount -o remount,ro rootfs /
