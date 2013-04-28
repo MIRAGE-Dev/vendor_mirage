@@ -16,9 +16,9 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
     vendor/mirage/prebuilt/common/bin/50-slim.sh:system/addon.d/50-slim.sh
 
-# SLIM-specific init file
+# MIRAGE-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/mirage/prebuilt/common/etc/init.local.rc:root/init.slim.rc
+    vendor/mirage/prebuilt/common/etc/init.local.rc:root/init.mirage.rc
 
 # Copy latinime for gesture typing
 PRODUCT_COPY_FILES += \
@@ -105,4 +105,5 @@ include vendor/mirage/config/themes_common.mk
 # Versioning System
 include vendor/mirage/config/version.mk
 
+# General mk
 include vendor/mirage/config/mirage.mk
