@@ -22,6 +22,3 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf
-
-# Custom audio engine By VanirTeam
-include vendor/mirage/config/mirage_audio.mk
