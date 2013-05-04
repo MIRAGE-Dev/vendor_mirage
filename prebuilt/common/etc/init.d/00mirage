@@ -62,6 +62,7 @@ busybox echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle;
 busybox echo "1" > /proc/sys/net/ipv4/tcp_window_scaling;
 busybox echo "5" > /proc/sys/net/ipv4/tcp_keepalive_probes;
 busybox echo "30" > /proc/sys/net/ipv4/tcp_keepalive_intvl;
+echo "10" > /proc/sys/fs/lease-break-time
 
 # VM
 echo "3000" > /proc/sys/vm/dirty_expire_centisecs;

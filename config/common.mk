@@ -7,14 +7,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.clientidbase=android-google \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.setupwizard.enterprise_mode=1 \
-    ro.com.android.dateformat=yyyy-MM-dd \
     ro.com.android.dataroaming=false
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/mirage/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/mirage/prebuilt/common/bin/50-slim.sh:system/addon.d/50-slim.sh
+    vendor/mirage/prebuilt/common/bin/50-mirage.sh:system/addon.d/50-mirage.sh
 
 # MIRAGE-specific init file
 PRODUCT_COPY_FILES += \
@@ -46,7 +45,7 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
 
 PRODUCT_COPY_FILES += \
-    vendor/mirage/prebuilt/common/etc/init.d/00slim:system/etc/init.d/00slim \
+    vendor/mirage/prebuilt/common/etc/init.d/00mirage:system/etc/init.d/00mirage \
     vendor/mirage/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/mirage/prebuilt/common/etc/init.d/98tweaks:system/etc/init.d/98tweaks \
     vendor/mirage/prebuilt/common/etc/liberty.bsh:system/etc/liberty.bsh \
