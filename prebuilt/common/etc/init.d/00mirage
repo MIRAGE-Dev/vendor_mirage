@@ -1,12 +1,18 @@
 #!/system/xbin/ash
+#!/system/bin/sh
 
 . /system/etc/liberty.bsh
+
+mount -o remount,rw,noatime,nodiratime /system
 
 # Always zipalign
 zipalign_apks
 
 # Enable Syscntl
-sysctl -p /system/etc/sysctl.conf
+if [ -e /system/etc/sysctl.conf ]
+  then
+  sysctl -p /system/etc/sysctl.conf
+fi
 
 # Fix Permissions
 fix_permissions
@@ -81,3 +87,4 @@ echo "0" > /proc/sys/vm/oom_dump_tasks;
 echo "3" > /proc/sys/vm/drop_caches;
 
 mount -o remount,ro rootfs /
+mount -o remount,ro,noatime,nodiratime /system
