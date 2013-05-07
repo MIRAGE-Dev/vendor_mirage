@@ -24,10 +24,10 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/etc/permissions/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml \
     vendor/mirage/prebuilt/common/etc/permissions/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml \
     vendor/mirage/prebuilt/common/etc/permissions/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml \
-    vendor/mirage/prebuilt/common/etc/permissions/features.xml:system/etc/permissions/features.xml
-    vendor/mirage/prebuilt/common/framework/com.google.android.maps.apk:system/framework/com.google.android.maps.jar \
+    vendor/mirage/prebuilt/common/etc/permissions/features.xml:system/etc/permissions/features.xml \
+    vendor/mirage/prebuilt/common/framework/com.google.android.maps.jar:system/framework/com.google.android.maps.jar \
     vendor/mirage/prebuilt/common/framework/com.google.android.media.effects.jar:system/framework/com.google.android.media.effects.jar \
-    vendor/mirage/prebuilt/common/framework/com.google.widevine.software.drm.jar:system/framework/com.google.widevine.software.drm.jar
+    vendor/mirage/prebuilt/common/framework/com.google.widevine.software.drm.jar:system/framework/com.google.widevine.software.drm.jar \
     vendor/mirage/prebuilt/common/lib/libfrsdk.so:system/lib/libfrsdk.so \
     vendor/mirage/prebuilt/common/lib/libgtalk_jni.so:system/lib/libgtalk_jni.so \
     vendor/mirage/prebuilt/common/lib/libgtalk_stabilize.so:system/lib/libgtalk_stabilize.so \

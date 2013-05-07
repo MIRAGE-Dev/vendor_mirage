@@ -75,6 +75,7 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/proprietary/tuna/etc/basimage_ibeats_studio.bin:system/etc/basimage_ibeats_studio.bin \
     vendor/mirage/proprietary/tuna/etc/basimage_ibeats_x.bin:system/etc/basimage_ibeats_x.bin \
     vendor/mirage/proprietary/tuna/etc/CodecDSPID.txt:system/etc/CodecDSPID.txt \
+    vendor/mirage/proprietary/tuna/etc/CodecDSPID_WB:system/etc/CodecDSPID_WB \
     vendor/mirage/proprietary/tuna/etc/CodecDSPID_WB.txt:system/etc/CodecDSPID_WB.txt \
     vendor/mirage/proprietary/tuna/etc/dynimage_gec.bin:system/etc/dynimage_gec.bin \
     vendor/mirage/proprietary/tuna/etc/dynimage_gec_bt.bin:system/etc/dynimage_gec_bt.bin \
@@ -83,8 +84,7 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/proprietary/tuna/etc/dynimage_ibeats_pro.bin:system/etc/dynimage_ibeats_pro.bin \
     vendor/mirage/proprietary/tuna/etc/dynimage_ibeats_solo.bin:system/etc/dynimage_ibeats_solo.bin \
     vendor/mirage/proprietary/tuna/etc/dynimage_ibeats_solo_x.bin:system/etc/dynimage_ibeats_solo_x.bin \
-    vendor/mirage/proprietary/tuna/etc/dynimage_ibeats_studio.bin:system/dynimage_ibeats_x.bin/dynimage_ibeats_studio.bin \
-    vendor/mirage/proprietary/tuna/etc/dynimage_ibeats_x.bin:system/etc/CodecDSPID_WB \
+    vendor/mirage/proprietary/tuna/etc/dynimage_ibeats_x.bin:system/etc/dynimage_ibeats_x.bin \
     vendor/mirage/proprietary/tuna/etc/eqfilter.txt:system/etc/eqfilter.txt \
     vendor/mirage/proprietary/tuna/etc/HP_Audio.csv:system/etc/HP_Audio.csv \
     vendor/mirage/proprietary/tuna/etc/HP_Audio.csv:system/etc/HP_Audio.csv \
@@ -169,7 +169,7 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/proprietary/tuna/etc/soundimage/Sound_Vocal_Booster.txt:system/etc/soundimage/Sound_Vocal_Booster.txt \
     vendor/mirage/proprietary/tuna/etc/soundimage/srs_bypass.cfg:system/etc/soundimage/srs_bypass.cfg \
     vendor/mirage/proprietary/tuna/etc/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
-    vendor/mirage/proprietary/tuna/etc/soundimage/srs_global.cfg:system/etc/srs_global.cfg/srs_bypass \
+    vendor/mirage/proprietary/tuna/etc/srs_global.cfg/srs_bypass:system/etc/srs_global.cfg/srs_bypass \
     vendor/mirage/proprietary/tuna/etc/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
     vendor/mirage/proprietary/tuna/etc/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
     vendor/mirage/proprietary/tuna/etc/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
