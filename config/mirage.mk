@@ -15,6 +15,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.enc.jpeg.quality=100 \
     persist.sys.root_access=3
 
+# Extra tools
+PRODUCT_PACKAGES += \
+    ash \
+    e2fsck \
+    tune2fs
+
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Trebuchet \

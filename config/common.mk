@@ -9,7 +9,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enterprise_mode=1 \
     ro.com.android.dataroaming=false
 
-# Backup Tool
+# Back-up Tool
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/mirage/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
@@ -39,6 +39,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
+# Tweaks
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/bin/sysrw:system/bin/sysrw \
     vendor/mirage/prebuilt/common/bin/sysro:system/bin/sysro \
@@ -52,6 +53,7 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/etc/init_trigger.disabled:system/etc/init_trigger.disabled \
     vendor/mirage/prebuilt/common/bin/sysinit:system/bin/sysinit
 
+# Cron fucks
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/etc/cron/cron.conf:system/etc/cron/cron.conf \
     vendor/mirage/prebuilt/common/etc/cron/cron.hourly/00drop_caches:system/etc/cron/cron.hourly/00drop_caches \
@@ -87,12 +89,6 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     SlimCenter \
     LatinIME
-
-# Extra tools
-PRODUCT_PACKAGES += \
-    e2fsck \
-    mke2fs \
-    tune2fs
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/mirage/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/mirage/overlay/common
