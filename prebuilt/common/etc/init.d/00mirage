@@ -6,7 +6,59 @@
 mount -o remount,rw,noatime,nodiratime /system
 
 # Always zipalign
-zipalign_apks
+ZIP_LOG_FILE=/data/zipalign.log;
+ZIPALIGNED_APK=/data/zipalig.db;
+
+if [ -e $ZIP_LOG_FILE ]; then
+	rm $ZIP_LOG_FILE;
+fi;
+
+touch $ZIP_LOG_FILE
+
+if [ ! -f $ZIPALIGNED_APK ]; then
+	touch $ZIPALIGNED_APK;
+fi;
+
+echo "Automatic ZipAlign started at $( date +"%m-%d-%Y %H:%M:%S" ) " | tee -a $ZiP_LOG_FILE;
+
+for DIR in /system/app /data/app; do
+	cd $DIR;
+	for APK in *.apk; do
+		if [ $APK -ot $ZIPALIGNED_APK ] && [ $(grep "$DIR/$APK" $ZIPALIGNED_APK|wc -l) -gt 0 ]; then
+			echo "Already checked: $DIR/$APK" | tee -a $ZIP_LOG_FILE;
+			if [ -e /data/$APK ]; then
+				rm /data/$APK;
+				echo "Temporary APK removed: /data/$APK" | tee -a $ZIP_LOG_FILE;
+			fi;
+		else
+			ZIPCHECK=`/system/bin/armzipalign -c -v 4 $APK | grep FAILED | wc -l`;
+			if [ $ZIPCHECK == "1" ]; then
+				echo "Now aligning: $DIR/$APK" | tee -a $ZIP_LOG_FILE;
+				/system/xbin/zipalign -v -f 4 $APK /data/$APK;
+				sync
+				cp -f -p /data/$APK $APK;
+				rm /data/$APK;
+				if [ -e /data/$APK ]; then
+					rm /data/$APK;
+					if [ -e /data/$APK ]; then
+						echo "Failed to remove APK. Run the tweak again : /data/$APK" | tee -a $ZIP_LOG_FILE;
+					else
+						echo "Temporary APK removed: /data/$APK" | tee -a $ZIP_LOG_FILE;
+					fi;
+				fi;
+				grep "$DIR/$APK" $ZIPALIGNED_APK > /dev/null || echo $DIR/$APK >> $ZIPALIGNED_APK;
+			else
+				echo "Already aligned: $DIR/$APK" | tee -a $ZIP_LOG_FILE;
+				if [ -e /data/$APK ]; then
+					rm /data/$APK;
+					echo "Temporary APK removed: /data/$APK" | tee -a $ZIP_LOG_FILE;
+				fi;
+				grep "$DIR/$APK" $ZIPALIGNED_APK > /dev/null || echo $DIR/$APK >> $ZIPALIGNED_APK;
+			fi;
+		fi;
+	done;
+done;
+sync
 
 # Enable Syscntl
 if [ -e /system/etc/sysctl.conf ]
