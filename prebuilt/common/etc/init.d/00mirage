@@ -19,7 +19,7 @@ if [ ! -f $ZIPALIGNED_APK ]; then
 	touch $ZIPALIGNED_APK;
 fi;
 
-echo "Automatic ZipAlign started at $( date +"%m-%d-%Y %H:%M:%S" ) " | tee -a $ZiP_LOG_FILE;
+echo "Automatic ZipAlign started at $( date +"%m-%d-%Y %H:%M:%S" ) " | tee -a $ZIP_LOG_FILE;
 
 for DIR in /system/app /data/app; do
 	cd $DIR;
