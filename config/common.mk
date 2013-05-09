@@ -87,7 +87,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DashClock \
     CMFileManager \
-    SlimCenter \
     LatinIME
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/mirage/overlay/dictionaries
