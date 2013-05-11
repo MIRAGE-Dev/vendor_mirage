@@ -20,7 +20,7 @@ PRODUCT_COPY_FILES += \
 
 # MIRAGE-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/mirage/prebuilt/common/etc/init.local.rc:root/init.mirage.rc
+    vendor/mirage/prebuilt/common/etc/init.mirage.rc:root/init.mirage.rc
 
 # Copy latinime for gesture typing
 PRODUCT_COPY_FILES += \
