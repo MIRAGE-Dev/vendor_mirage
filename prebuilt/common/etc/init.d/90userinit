@@ -5,3 +5,5 @@ busybox rm -f /cache/*.apk
 busybox rm -f /cache/*.tmp
 busybox rm -f /data/dalvik-cache/*.apk
 busybox rm -f /data/dalvik-cache/*.tmp
+busybox rm -f /data/system/dropbox/*.txt
+busybox rm -f /data/system/dropbox/*.txt.gz
