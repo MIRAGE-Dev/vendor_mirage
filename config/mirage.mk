@@ -3,10 +3,6 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/proprietary/KoreanIME/GoogleKoreanIME.apk:system/app/GoogleKoreanIME.apk \
     vendor/mirage/proprietary/KoreanIME/libjni_koreanime.so:system/lib/libjni_koreanime.so
 
-# RoundR
-PRODUCT_COPY_FILES += \
-    vendor/mirage/proprietary/RoundR/RoundR.apk:system/app/RoundR.apk
-
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
     dalvik.vm.execution-mode=int:jit \
