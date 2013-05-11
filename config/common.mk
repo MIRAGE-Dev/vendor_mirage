@@ -1,3 +1,6 @@
+# AK Kernel
+include vendor/mirage/config/AK.mk
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -48,8 +51,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/etc/init.d/00mirage:system/etc/init.d/00mirage \
     vendor/mirage/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    vendor/mirage/prebuilt/common/etc/init.d/950iosettings:system/etc/init.d/950iosettings \
-    vendor/mirage/prebuilt/common/etc/init.d/96fq_codel:system/etc/init.d/96fq_codel \
     vendor/mirage/prebuilt/common/etc/init.d/98tweaks:system/etc/init.d/98tweaks \
     vendor/mirage/prebuilt/common/etc/liberty.bsh:system/etc/liberty.bsh \
     vendor/mirage/prebuilt/common/etc/init_trigger.disabled:system/etc/init_trigger.disabled \
