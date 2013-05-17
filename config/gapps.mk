@@ -1,6 +1,7 @@
 # Gapps
 PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/app/CalendarGoogle.apk:system/app/CalendarGoogle.apk \
+    vendor/mirage/prebuilt/common/app/CalendarProvider.apk:system/app/CalendarProvider.apk \
     vendor/mirage/prebuilt/common/app/ChromeBookmarksSyncAdapter.apk:system/app/ChromeBookmarksSyncAdapter.apk \
     vendor/mirage/prebuilt/common/app/Gmail.apk:system/app/Gmail.apk \
     vendor/mirage/prebuilt/common/app/GmsCore.apk:system/app/GmsCore.apk \

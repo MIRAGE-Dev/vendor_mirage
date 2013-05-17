@@ -1,6 +1,3 @@
-# AK Kernel
-#include vendor/mirage/config/AK.mk
-
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
