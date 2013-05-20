@@ -5,61 +5,6 @@
 
 mount -o remount,rw,noatime,nodiratime /system
 
-# Always zipalign
-ZIP_LOG_FILE=/data/zipalign.log;
-ZIPALIGNED_APK=/data/zipalig.db;
-
-if [ -e $ZIP_LOG_FILE ]; then
-	rm $ZIP_LOG_FILE;
-fi;
-
-touch $ZIP_LOG_FILE
-
-if [ ! -f $ZIPALIGNED_APK ]; then
-	touch $ZIPALIGNED_APK;
-fi;
-
-echo "Automatic ZipAlign started at $( date +"%m-%d-%Y %H:%M:%S" ) " | tee -a $ZIP_LOG_FILE;
-
-for DIR in /system/app /data/app; do
-	cd $DIR;
-	for APK in *.apk; do
-		if [ $APK -ot $ZIPALIGNED_APK ] && [ $(grep "$DIR/$APK" $ZIPALIGNED_APK|wc -l) -gt 0 ]; then
-			echo "Already checked: $DIR/$APK" | tee -a $ZIP_LOG_FILE;
-			if [ -e /data/$APK ]; then
-				rm /data/$APK;
-				echo "Temporary APK removed: /data/$APK" | tee -a $ZIP_LOG_FILE;
-			fi;
-		else
-			ZIPCHECK=`/system/bin/armzipalign -c -v 4 $APK | grep FAILED | wc -l`;
-			if [ $ZIPCHECK == "1" ]; then
-				echo "Now aligning: $DIR/$APK" | tee -a $ZIP_LOG_FILE;
-				/system/xbin/zipalign -v -f 4 $APK /data/$APK;
-				sync
-				cp -f -p /data/$APK $APK;
-				rm /data/$APK;
-				if [ -e /data/$APK ]; then
-					rm /data/$APK;
-					if [ -e /data/$APK ]; then
-						echo "Failed to remove APK. Run the tweak again : /data/$APK" | tee -a $ZIP_LOG_FILE;
-					else
-						echo "Temporary APK removed: /data/$APK" | tee -a $ZIP_LOG_FILE;
-					fi;
-				fi;
-				grep "$DIR/$APK" $ZIPALIGNED_APK > /dev/null || echo $DIR/$APK >> $ZIPALIGNED_APK;
-			else
-				echo "Already aligned: $DIR/$APK" | tee -a $ZIP_LOG_FILE;
-				if [ -e /data/$APK ]; then
-					rm /data/$APK;
-					echo "Temporary APK removed: /data/$APK" | tee -a $ZIP_LOG_FILE;
-				fi;
-				grep "$DIR/$APK" $ZIPALIGNED_APK > /dev/null || echo $DIR/$APK >> $ZIPALIGNED_APK;
-			fi;
-		fi;
-	done;
-done;
-sync
-
 # Enable Syscntl
 if [ -e "/system/etc/sysctl.conf" ]; then
   sysctl -p /system/etc/sysctl.conf
@@ -107,7 +52,7 @@ busybox crond -c /data/cron
 mount -o remount,rw rootfs /
 
 # Read Ahead
-if [ -e "/sys/devices/virtual/bdi/179:0/read_ahead_kb" ]; then
+if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ]; then
         echo "1024" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
 fi
 
@@ -121,7 +66,6 @@ busybox echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle;
 busybox echo "1" > /proc/sys/net/ipv4/tcp_window_scaling;
 busybox echo "5" > /proc/sys/net/ipv4/tcp_keepalive_probes;
 busybox echo "30" > /proc/sys/net/ipv4/tcp_keepalive_intvl;
-echo "10" > /proc/sys/fs/lease-break-time
 
 # VM
 echo "2500" > /proc/sys/vm/dirty_expire_centisecs;
