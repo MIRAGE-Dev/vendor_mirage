@@ -101,8 +101,5 @@ include vendor/mirage/config/version.mk
 # General mk
 include vendor/mirage/config/mirage.mk
 
-# Custom audio engine By VanirTeam
-#include vendor/mirage/config/mirage_audio.mk
-
 # Slim GAPPS
-#include vendor/mirage/config/gapps.mk
+include vendor/mirage/config/gapps.mk
