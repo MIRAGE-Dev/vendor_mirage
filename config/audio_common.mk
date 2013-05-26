@@ -19,5 +19,5 @@ PRODUCT_COPY_FILES +=  \
     vendor/mirage/prebuilt/common/media/audio/notifications/Altair.ogg:system/media/audio/notifications/Altair.ogg \
     vendor/mirage/prebuilt/common/media/audio/notifications/Helium.ogg:system/media/audio/notifications/Helium.ogg \
     vendor/mirage/prebuilt/common/media/audio/notifications/Aldebaran.ogg:system/media/audio/notifications/Aldebaran.ogg
-#LOCAL SLIM CHANGES  - END
+#LOCAL MIRAGE CHANGES - END
 
