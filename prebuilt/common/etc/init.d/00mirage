@@ -56,17 +56,6 @@ if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ]; then
         echo "1024" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
 fi
 
-# etc
-busybox echo "0" > /proc/sys/net/ipv6/conf/all/forwarding
-busybox echo "0" > /proc/sys/net/ipv4/tcp_timestamps
-busybox echo "1" > /proc/sys/net/ipv4/tcp_no_metrics_save
-busybox echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse;
-busybox echo "1" > /proc/sys/net/ipv4/tcp_sack;
-busybox echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle;
-busybox echo "1" > /proc/sys/net/ipv4/tcp_window_scaling;
-busybox echo "5" > /proc/sys/net/ipv4/tcp_keepalive_probes;
-busybox echo "30" > /proc/sys/net/ipv4/tcp_keepalive_intvl;
-
 # VM
 echo "2500" > /proc/sys/vm/dirty_expire_centisecs;
 echo "300" > /proc/sys/vm/dirty_writeback_centisecs;
