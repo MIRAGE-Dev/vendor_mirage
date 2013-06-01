@@ -5,8 +5,8 @@
 
 mount -o remount,rw,noatime,nodiratime /system
 
-# Enable Syscntl
-if [ -e "/system/etc/sysctl.conf" ]; then
+# Enable Sysctl
+if [ -e /system/etc/sysctl.conf ]; then
   sysctl -p /system/etc/sysctl.conf
 fi
 
@@ -55,22 +55,6 @@ mount -o remount,rw rootfs /
 if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ]; then
         echo "1024" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
 fi
-
-# VM
-echo "2500" > /proc/sys/vm/dirty_expire_centisecs;
-echo "300" > /proc/sys/vm/dirty_writeback_centisecs;
-echo "8192" > /proc/sys/vm/min_free_kbytes;
-echo "1" > /proc/sys/vm/oom_kill_allocating_task;
-echo "0" > /proc/sys/vm/panic_on_oom;
-echo "70" > /proc/sys/vm/dirty_background_ratio;
-echo "90" > /proc/sys/vm/dirty_ratio;
-echo "5" > /proc/sys/vm/vfs_cache_pressure;
-echo "0" > /proc/sys/vm/overcommit_memory;
-echo "4" > /proc/sys/vm/min_free_order_shift;
-echo "0" > /proc/sys/vm/laptop_mode;
-echo "0" > /proc/sys/vm/block_dump;
-echo "0" > /proc/sys/vm/oom_dump_tasks;
-echo "3" > /proc/sys/vm/drop_caches;
 
 mount -o remount,ro rootfs /
 mount -o remount,ro,noatime,nodiratime /system
