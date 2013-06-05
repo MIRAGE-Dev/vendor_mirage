@@ -117,25 +117,6 @@ rm -rf $REPACK/ota/system/etc/recovery-resource.dat
 [ -d $REPACK/ota/system/lib/modules ] && \
 	find $REPACK/ota/system/lib/modules -name "*.ko" -print0 | xargs -0 arm-eabi-strip --strip-unneeded
 
-# Fix LCD Density for slim
-DEVICELCD=`sed -n -e'/ro\.sf\.lcd_density/s/^.*=//p' $OUT/system/build.prop`
-if [ "$DEVICELCD" = "240" ]; then
-   sed -i 's/ro.sf.lcd_density=240/ro.sf.lcd_density=182/g' $OUT/system/build.prop
-elif [ "$DEVICELCD" = "213" ]; then
-    sed -i 's/ro.sf.lcd_density=213/ro.sf.lcd_density=182/g' $OUT/system/build.prop
-fi
-
-# Fix LCD Density for GNote
-DEVICEID=`sed -n -e'/ro\.product\.device/s/^.*=//p' $OUT/system/build.prop`
-if [ "$DEVICEID" = "SGH-I717" ]; then
-   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
-elif [ "$DEVICEID" = "GT-N7000" ]; then
-   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
-elif [ "$DEVICEID" = "mako" ]; then
-   sed -i 's/ro.sf.lcd_density=245/ro.sf.lcd_density=268/g' $OUT/system/build.prop
-fi
-cp -f $OUT/system/build.prop $REPACK/ota/system/build.prop
-
 # Swap boot.img
 PREBUILTKERNEL=$OUT/system/slimkernel/boot.img
 if [ -e "$PREBUILTKERNEL" ];then
@@ -171,10 +152,10 @@ img=`basename $OUTFILE`
 cd `dirname $OUTFILE`
 $MD5 $img >$img.md5
 echo
-echo "  ※======================================================================================================※  "
+echo "  ※=======================================================================================================※   "
 echo "  "$CL_RED"Package complete"$CL_RST" : "$CL_CYN"$OUTFILE "$CL_RST
 echo "  "$CL_RED"MD5"$CL_RST" : "$CL_MAG"`cat $img.md5` "$CL_RST
-echo "  ※======================================================================================================※  "
+echo "  ※=======================================================================================================※   "
 echo
 )
 
