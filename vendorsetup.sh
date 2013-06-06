@@ -3,7 +3,7 @@ add_lunch_combo mirage_crespo-userdebug
 #add_lunch_combo mirage_grouper-userdebug
 #add_lunch_combo mirage_i9300-userdebug
 add_lunch_combo mirage_maguro-userdebug
-#add_lunch_combo mirage_mako-userdebug
+add_lunch_combo mirage_mako-userdebug
 #add_lunch_combo mirage_tilapia-userdebug
 add_lunch_combo mirage_toro-userdebug
 #add_lunch_combo mirage_toroplus-userdebug
