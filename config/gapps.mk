@@ -18,7 +18,7 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/app/OneTimeInitializer.apk:system/app/OneTimeInitializer.apk \
     vendor/mirage/prebuilt/common/app/SetupWizard.apk:system/app/SetupWizard.apk \
     vendor/mirage/prebuilt/common/app/SpareParts.apk:system/app/SpareParts.apk \
-    vendor/mirage/prebuilt/common/app/Talk.apk:system/app/Talk.apk \
+    vendor/mirage/prebuilt/common/app/Hangouts:system/app/Hangouts.apk \
     vendor/mirage/prebuilt/common/app/Vending.apk:system/app/Vending.apk \
     vendor/mirage/prebuilt/common/app/YouTube.apk:system/app/YouTube.apk \
     vendor/mirage/prebuilt/common/app/VisualizationWallpapers.apk:system/app/VisualizationWallpapers.apk \
@@ -34,4 +34,5 @@ PRODUCT_COPY_FILES += \
     vendor/mirage/prebuilt/common/lib/libgtalk_stabilize.so:system/lib/libgtalk_stabilize.so \
     vendor/mirage/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so \
     vendor/mirage/prebuilt/common/lib/libspeexwrapper.so:system/lib/libspeexwrapper.so \
-    vendor/mirage/prebuilt/common/lib/libvorbisencoder.so:system/lib/libvorbisencoder.so
+    vendor/mirage/prebuilt/common/lib/libvorbisencoder.so:system/lib/libvorbisencoder.so \
+    vendor/mirage/prebuilt/common/lib/libvideochat_jni.so:system/lib/libvideochat_jni.so
