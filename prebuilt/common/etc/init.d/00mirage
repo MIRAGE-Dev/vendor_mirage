@@ -1,4 +1,3 @@
-#!/system/bin/ash
 #!/system/bin/sh
 
 . /system/etc/liberty.bsh
