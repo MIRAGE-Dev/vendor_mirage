@@ -7,8 +7,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
     dalvik.vm.execution-mode=int:jit \
     ro.kernel.android.checkjni=0 \
-    ro.media.enc.jpeg.quality=100 \
-    persist.sys.root_access=3
+    ro.media.enc.jpeg.quality=100
 
 # Extra tools
 PRODUCT_PACKAGES += \
