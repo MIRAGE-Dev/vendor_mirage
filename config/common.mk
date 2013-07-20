@@ -102,4 +102,4 @@ include vendor/mirage/config/version.mk
 include vendor/mirage/config/mirage.mk
 
 # Slim GAPPS
-#include vendor/mirage/config/gapps.mk
+include vendor/mirage/config/gapps.mk
