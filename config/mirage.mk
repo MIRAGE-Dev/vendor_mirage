@@ -21,7 +21,7 @@ PRODUCT_PACKAGES += \
     Trebuchet \
     Apollo \
     DSPManager \
-    Halo \
+    HALO \
     MIRAGEPapers \
     libcyanogen-dsp \
     audio_effects.conf
